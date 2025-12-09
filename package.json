@@ -1,0 +1,10 @@
+{
+  "name": "econtools-notify-cron",
+  "version": "1.0.0",
+  "description": "Render cron worker calling Supabase notify-teacher function",
+  "main": "cron.js",
+  "type": "module",
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  }
+}
