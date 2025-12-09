@@ -3,9 +3,8 @@ import fetch from "node-fetch";
 const FUNCTION_URL =
   "https://ibxysdrbvizicrjzxtgd.supabase.co/functions/v1/notify-teacher";
 
-// Optional: only needed if your function requires auth.
-// If your function does NOT require auth, leave this empty.
-const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY || "";
+// The shared secret must match what you set in Supabase Env Vars
+const CRON_SECRET = process.env.CRON_SECRET;
 
 async function main() {
   console.log("Cron worker starting...");
@@ -15,9 +14,7 @@ async function main() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        ...(SUPABASE_ANON_KEY
-          ? { Authorization: `Bearer ${SUPABASE_ANON_KEY}` }
-          : {})
+        "x-cron-secret": CRON_SECRET || "" // must match your Edge Function check
       },
       body: JSON.stringify({ source: "render-cron" })
     });
