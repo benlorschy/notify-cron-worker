@@ -1,5 +1,8 @@
 import fetch from "node-fetch";
 
+console.log("🚨 NEW CRON.JS VERSION RUNNING 🚨");
+
+
 const TEACHER_FUNCTION_URL =
   "https://ibxysdrbvizicrjzxtgd.supabase.co/functions/v1/notify-teacher";
 
